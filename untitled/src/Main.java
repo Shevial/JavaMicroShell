@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner lector = new Scanner(System.in);
         while(true) {
-            System.out.print(Prompt.getPrompt());
+            System.out.print(Prompt.getPrompt());  //imprimir el prompt con el directorio actual
             String entrada = lector.nextLine().trim(); //trim para no tener en cuenta los espacios
             if(entrada.isEmpty()) // si entra un Enter, que vuelva a preguntar
                 continue;
@@ -17,7 +17,8 @@ public class Main {
 
             String comando = token[0]; // guardamos en comando el comando
             String[] argumentos = new String[token.length - 1]; //guarda argumentos
-            System.arraycopy(token, 1, argumentos, 0, token.length - 1);
+            System.arraycopy(token, 1, argumentos, 0, token.length - 1); //Copia los elementos de token, excepto el primero (token[0]) hasta el ultimo (token lenght -1), al array argumentos.
+
 
             if(!Builtins.exec(comando, argumentos)) {
                 Execve.execve(comando, argumentos);
